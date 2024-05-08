@@ -15,3 +15,5 @@ spring:
 loan:
   minimalIncome: 40000
   minCarValue: 1000000
+  percentOfIncome: 0.5
+  percentOfCarValue: 0.3
