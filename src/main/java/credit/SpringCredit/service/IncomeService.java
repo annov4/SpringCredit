@@ -14,8 +14,16 @@ public class IncomeService {
         this.restTemplate = restTemplate;
     }
 
-    public Income getIncome() {
+    public Income getIncomeForUser(Long userId) {
         String url = "https://66055cd12ca9478ea1801f2e.mockapi.io/api/users/income";
-        return restTemplate.getForObject(url, Income.class);
+        Income[] incomes = restTemplate.getForObject(url, Income[].class);
+        if (incomes != null) {
+            for (Income income : incomes) {
+                if (income.getUserId() == userId) {
+                    return income;
+                }
+            }
+        }
+        return new Income(userId, 0);
     }
 }

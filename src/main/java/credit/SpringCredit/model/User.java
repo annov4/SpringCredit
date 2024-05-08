@@ -9,21 +9,25 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name")
-    private String firstName;
-
-    @Column(name = "last_name")
-    private String lastName;
-
-    @Transient
-    private Integer income;
+    @Column(name = "user _name")
+    private String userName;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "car_id", referencedColumnName = "id")
+
     private Car car;
 
-
     public User() {
+
+    }
+
+    public User(String userName) {
+        this.userName = userName;
+    }
+
+    public User(String userName, Car car) {
+        this.userName = userName;
+        this.car = car;
     }
 
     public Long getId() {
@@ -34,29 +38,6 @@ public class User {
         this.id = id;
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public Integer getIncome() {
-        return income;
-    }
-
-    public void setIncome(int income) {
-        this.income = income;
-    }
 
     public Car getCar() {
         return car;
@@ -66,11 +47,17 @@ public class User {
         this.car = car;
     }
 
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
     @Override
     public String toString() {
-        return firstName + " " +
-                lastName + " " +
-                income + " " +
+        return userName + " " +
                 car;
     }
 }

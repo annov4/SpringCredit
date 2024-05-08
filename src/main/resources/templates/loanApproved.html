@@ -1,13 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>Loan Approval</title>
+    <title>Loan Approval</title>
 </head>
 <body>
-<div class="container">
-  <h1>Congratulations!</h1>
- <span id="approvedAmount">{{approvedAmount}}</span></p>
-</div>
+
+<p><span th:text="${approvedAmount}"></span></p>
+
 </body>
 </html>

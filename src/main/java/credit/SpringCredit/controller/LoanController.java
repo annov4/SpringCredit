@@ -25,19 +25,16 @@ public class LoanController {
         this.userService = userService;
     }
 
-
     @GetMapping
     public String approveLoan(@RequestParam(value = "userId") Long userId, Model model) {
-        User userWithIncome = userService.getUserWithIncome(userId);
-        double approvedAmount = creditCalculator.calculateApprovedAmount(userWithIncome);
 
-        model.addAttribute("user", userWithIncome);
+        User user = userService.findById(userId);
+
+        double approvedAmount = creditCalculator.calculateApprovedAmount(user);
+
+        model.addAttribute("user", user);
         model.addAttribute("approvedAmount", approvedAmount);
 
-        if (approvedAmount > 0) {
-            return "loanApproved";
-        } else {
-            return "loanRejected";
-        }
+        return "loanApproved";
     }
 }
