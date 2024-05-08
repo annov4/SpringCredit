@@ -18,48 +18,30 @@ public class UserService {
 
     }
 
-    @PostConstruct
-    public void initDB() {
-        createUser();
-    }
-
     public User findById(Long id) {
         return userRepository.findById(id).orElse(null);
     }
 
+    @PostConstruct
     public void createUser() {
-        Car bmw = new Car("BMW", 5000000);
-        User vasiliy = new User("Vasiliy", bmw);
-        userRepository.save(vasiliy);
 
-        User anton = new User("Anton");
-        userRepository.save(anton);
+        userRepository.save(new User("Vasiliy", new Car("BMW", 5000000)));
 
-        User pasha = new User("Pasha");
-        userRepository.save(pasha);
+        userRepository.save(new User("Anton"));
 
-        Car volvo = new Car("Volvo", 300000);
-        User fedor = new User("Fedor", volvo);
-        userRepository.save(fedor);
+        userRepository.save(new User("Pasha"));
 
-        Car faw = new Car("Faw", 400000);
-        User sergey = new User("Sergey", faw);
-        userRepository.save(sergey);
+        userRepository.save(new User("Fedor", new Car("Volvo", 300000)));
 
-        Car exeed = new Car("Exeed", 100000);
-        User roman = new User("Roman", exeed);
-        userRepository.save(roman);
+        userRepository.save(new User("Sergey", new Car("Faw", 400000)));
 
-        Car fiat = new Car("Fiat", 300000);
-        User galina = new User("Galina", fiat);
-        userRepository.save(galina);
+        userRepository.save(new User("Roman", new Car("Exeed", 100000)));
 
-        Car mazda = new Car("Mazda", 6000000);
-        User nasty = new User("Nasty", mazda);
-        userRepository.save(nasty);
+        userRepository.save(new User("Galina", new Car("Fiat", 300000)));
 
-        User masha = new User("Masha");
-        userRepository.save(masha);
+        userRepository.save(new User("Nasty", new Car("Mazda", 6000000)));
+
+        userRepository.save(new User("Masha"));
 
 
     }
