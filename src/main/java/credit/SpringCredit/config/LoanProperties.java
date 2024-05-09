@@ -16,6 +16,5 @@ public class LoanProperties {
     private double percentOfIncome;
     private double percentOfCarValue;
 
-
 }
 

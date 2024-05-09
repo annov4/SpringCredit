@@ -4,6 +4,7 @@ package credit.SpringCredit.controller;
 import credit.SpringCredit.model.User;
 import credit.SpringCredit.service.CreditCalculator;
 import credit.SpringCredit.service.UserService;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,16 +15,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/loan")
+@AllArgsConstructor
 public class LoanController {
 
     private final UserService userService;
-
-    @Autowired
-    private CreditCalculator creditCalculator;
-
-    public LoanController(UserService userService) {
-        this.userService = userService;
-    }
+    private final CreditCalculator creditCalculator;
 
     @GetMapping
     public String approveLoan(@RequestParam(value = "userId") Long userId, Model model) {
@@ -36,5 +32,6 @@ public class LoanController {
         model.addAttribute("approvedAmount", approvedAmount);
 
         return "loanApproved";
+
     }
 }

@@ -1,7 +1,6 @@
 package credit.SpringCredit.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -31,6 +30,7 @@ public class User {
     public User(String userName, Car car) {
         this.userName = userName;
         this.car = car;
+
     }
 
 }

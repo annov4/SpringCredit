@@ -5,18 +5,14 @@ import credit.SpringCredit.model.Car;
 import credit.SpringCredit.model.User;
 import credit.SpringCredit.repository.UserRepository;
 import jakarta.annotation.PostConstruct;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
+@AllArgsConstructor
 public class UserService {
+
     private final UserRepository userRepository;
-
-    @Autowired
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
-
-    }
 
     public User findById(Long id) {
         return userRepository.findById(id).orElse(null);
@@ -42,7 +38,6 @@ public class UserService {
         userRepository.save(new User("Nasty", new Car("Mazda", 6000000)));
 
         userRepository.save(new User("Masha"));
-
 
     }
 }
