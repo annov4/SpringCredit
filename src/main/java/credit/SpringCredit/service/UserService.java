@@ -5,11 +5,11 @@ import credit.SpringCredit.model.Car;
 import credit.SpringCredit.model.User;
 import credit.SpringCredit.repository.UserRepository;
 import jakarta.annotation.PostConstruct;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class UserService {
 
     private final UserRepository userRepository;
