@@ -1,6 +1,5 @@
 package credit.SpringCredit.service;
 
-
 import credit.SpringCredit.model.Car;
 import credit.SpringCredit.model.User;
 import credit.SpringCredit.repository.UserRepository;

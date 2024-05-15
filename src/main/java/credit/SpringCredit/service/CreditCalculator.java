@@ -1,19 +1,24 @@
 package credit.SpringCredit.service;
 
+import com.example.spring_boot_starter.client.IncomeClient;
 import credit.SpringCredit.config.LoanProperties;
 import credit.SpringCredit.model.User;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
-@RequiredArgsConstructor
 public class CreditCalculator {
 
     private final LoanProperties loanProperties;
-    private final IncomeService incomeService;
+    private final IncomeClient incomeClient;
+
+
+    public CreditCalculator(LoanProperties loanProperties, IncomeClient incomeClient) {
+        this.loanProperties = loanProperties;
+        this.incomeClient = incomeClient;
+    }
 
     public double calculateApprovedAmount(User user) {
-        double income = incomeService.getIncomeForUser(user.getId()).getIncome();
+        double income = incomeClient.getIncomeForUser(user.getId()).getIncome();
         double approvedAmount = 0;
 
         if (user.getCar() != null && user.getCar().getPrice() > loanProperties.getMinCarValue()) {
